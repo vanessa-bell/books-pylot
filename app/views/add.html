@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+	<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+	 <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  	<div class="container-fluid">
+	  		<ul class="nav navbar-nav">
+	        	<li><a href="/books">Home</a></li>
+	        	<li><a href="/logoff">Logout</a></li>
+	  			</ul>
+	  	</div>
+  	</nav>
+  	<div class="container-fluid">
+		<h4>Add a New Book and Review:</h4>
+			<form action='/books/add/new' method="POST">
+				<h5>Book Title:</h5>
+				<input type="text" name="title" class="input-xlarge">
+				<h5>Author:</h5>
+				<p class='author'>Choose from the list: </p>
+					<select name="existing_authors">
+						<option value="-">-</option>
+					{% for author in authors %}
+					{{author}}
+						<option value="{{author.id}}">{{author.full_name}}</option>
+					{%endfor%}
+					</select>
+				<p class='author'>Or add a new author:</p>
+				<input type="text" name="author" class="input-xlarge"></p>
+				<h5>Review:</h5>
+				<textarea cols="300" rows="5" name="review"></textarea>
+				<h5>Rating (out of 5):</h5>
+				<select name="rating">
+				    <option>1</option>
+				    <option>2</option>
+				    <option>3</option>
+				    <option>4</option>
+				    <option>5</option>
+				</select>
+				<p><input class='submit' type="submit" name="add-book" value="Add Book and Review"></p>
+
+
+			</form>
+		</div>
+</body>
+</html>

@@ -1,22 +1,16 @@
-"""
-    Routes Configuration File
-
-    Put Routing rules here
-"""
 from system.core.router import routes
 
-"""
-    This is where you define routes
-    
-    Start by defining the default controller
-    Pylot will look for the index method in the default controller to handle the base route
-
-    Pylot will also automatically generate routes that resemble: '/controller/method/parameters'
-    For example if you had a products controller with an add method that took one parameter 
-    named id the automatically generated url would be '/products/add/<id>'
-    The automatically generated routes respond to all of the http verbs (GET, POST, PUT, PATCH, DELETE)
-"""
-routes['default_controller'] = 'Welcome'
+routes['default_controller'] = 'Users'
+routes['POST']['/users/create'] = 'Users#process'
+routes['/books'] = 'Users#home'
+routes['/books/add/'] = 'Reviews#create'
+routes['POST']['/books/add/new'] ='Reviews#add_book_and_review'
+routes['POST']['/books/add/new/<id>'] = 'Reviews#add_review'
+routes['/books/<id>'] = 'Reviews#index'
+routes['/logoff'] = 'Users#logoff'
+routes['POST']['/login'] = 'Users#login'
+routes['/users/<id>'] = 'Users#profile'
+routes['/books/delete/<book_id>/<review_id>'] = 'Reviews#delete'
 """
     You can add routes and specify their handlers as follows:
 

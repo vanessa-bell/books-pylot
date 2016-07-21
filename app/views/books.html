@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+	 <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  	<div class="container-fluid">
+  		<h3 class='nav navbar-nav'>Welcome, {{session['alias']}}</h3>
+  			<ul class="nav navbar-nav">
+        		<li><a href="/books/add">Add Book and Review</a></li>
+        		<li><a href="/logoff">Logout</a></li>
+  			</ul>
+  	</div>
+  </nav>
+ <div class="container-fluid">
+	
+		<div id='book-reviews'><!-- start #book-reviews div -->
+			<h4>Recent Book Reviews:</h4>
+			<hr>
+			{% for x in range(0,3) %}
+			<div id='review'>
+				<a href="/books/{{all_reviews[x]['book_id']}}"><span>{{all_reviews[x]['title']}}</span></a>
+				<p><span>Rating:</span> {{all_reviews[x]['rating']}}/5</p>
+				<p><a href="/users/{{all_reviews[x]['user_id']}}">{{all_reviews[x]['alias']}} </a> says: "{{all_reviews[x]['review']}}"</p>
+				<p class='italic'>Posted on {{all_reviews[x]['created_at'].strftime('%B %d, %Y at %r')}}</p>
+			</div>
+			<hr>
+			{%endfor%}
+		</div><!-- end #book-reviews div -->
+		<div id='other-books'>
+			<h4>Other Books with Reviews:</h4>
+				{% for book in books %}
+				<p><a href="/books/{{book.id}}">{{book.title}}</a></p>
+				{%endfor%}
+		</div><!-- end #other-books div -->
+	</div>
+</body>
+</html>

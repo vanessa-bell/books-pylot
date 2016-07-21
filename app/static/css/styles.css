@@ -1,3 +1,42 @@
-* {
-  font-family: monaco;
+span {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+#other-books {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 300px;
+	margin-top: 50px;
+	border: 0.5px solid grey;
+	padding: 10px;
+}
+
+#book-reviews {
+	display: inline-block;
+}
+
+.error {
+	background-color: red;
+	width: 300px;
+	color: white;
+	padding: 5px;
+}
+
+.submit {
+	margin-top: 10px;
+}
+
+#reviews {
+	text-indent: 50px;
+}
+
+h5 {
+	margin-top: 20px;
+}
+
+#add-reviews {
+	display: inline-block;
+	margin-left: 300px;
 }
